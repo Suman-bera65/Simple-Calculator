@@ -1,10 +1,8 @@
-//alert("c1.js loaded");
 
-// store numbers inputs and operation
+
+// store numbers  and operation
 let firstNumber = null;
 let currentOperation = null;
-
-// get the display element (this works now because script uses "defer")
 const display = document.getElementById("display");
 
 // add numbers to the display
@@ -21,15 +19,12 @@ function clearDisplay() {
 
 // store the chosen operation
 function setOperation(operation) {
-    firstNumber = Number(display.value);   // convert string('1') to number 1
-    currentOperation = operation;          // "+", "-", "*", "/" //pass the operation
-    display.value = "";                    // empty display, for second number display
+    firstNumber = Number(display.value);   
+    currentOperation = operation;         
+    display.value = "";                    
 }
 
-//why only firstNumber and currentOperation are used in setOperation function but not secondNumber?
-// because secondNumber is obtained later when calculate() is called
-//first number can be more than one digit, so we need to store it as a number
-// second number is obtained from display when "=" is clicked
+
 
 
 // calculate result when "=" is clicked
