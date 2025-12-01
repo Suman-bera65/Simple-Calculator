@@ -1,35 +1,29 @@
 
-
-// store numbers  and operation
 let firstNumber = null;
 let currentOperation = null;
+
 const display = document.getElementById("display");
 
 // add numbers to the display
-function appendToDisplay(value) { //multiple digits can be added 123 .. so on
+function appendToDisplay(value) {
     display.value += value;
 }
 
-// clear calculator
 function clearDisplay() {
     display.value = "";
     firstNumber = null;
     currentOperation = null;
 }
-
 // store the chosen operation
 function setOperation(operation) {
-    firstNumber = Number(display.value);   
-    currentOperation = operation;         
-    display.value = "";                    
+    firstNumber = Number(display.value);
+    currentOperation = operation;
+    display.value += " " + operation + " ";
 }
 
-
-
-
-// calculate result when "=" is clicked
 function calculate() {
-    const secondNumber = Number(display.value);
+    const parts = display.value.split(currentOperation);//returns an list of strings
+    const secondNumber = Number(parts[1].trim());// convert second part to number, trim removes any extra spaces
     let result;
 
     switch (currentOperation) {
@@ -50,7 +44,6 @@ function calculate() {
     }
 
     display.value = result;
-
     // reset so next calculation starts fresh
     firstNumber = null;
     currentOperation = null;
